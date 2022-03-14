@@ -1,13 +1,6 @@
 package com.example.recipestore.controllers;
 
-import com.example.recipestore.RecipeDAO;
-import com.example.recipestore.models.Recipe;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MealPlanServletTest {
 

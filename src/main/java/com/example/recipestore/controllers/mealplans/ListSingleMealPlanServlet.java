@@ -1,7 +1,6 @@
 package com.example.recipestore.controllers.mealplans;
 
-import com.example.recipestore.MealPlanDAO;
-import com.example.recipestore.RecipeDAO;
+import com.example.recipestore.DAO.MealPlanDAO;
 import com.example.recipestore.models.MealPlan;
 
 import javax.servlet.*;

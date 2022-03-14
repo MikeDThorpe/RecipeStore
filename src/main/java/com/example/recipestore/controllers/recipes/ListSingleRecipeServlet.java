@@ -1,12 +1,11 @@
 package com.example.recipestore.controllers.recipes;
 
-import com.example.recipestore.RecipeDAO;
+import com.example.recipestore.DAO.RecipeDAO;
 import com.example.recipestore.models.Recipe;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class ListSingleRecipeServlet extends HttpServlet {
     RecipeDAO recipeDAO;

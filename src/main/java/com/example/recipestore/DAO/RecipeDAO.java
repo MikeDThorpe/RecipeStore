@@ -1,13 +1,11 @@
-package com.example.recipestore;
+package com.example.recipestore.DAO;
 
 import com.example.recipestore.hibernateUtil;
-import com.example.recipestore.models.Instruction;
 import com.example.recipestore.models.Recipe;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

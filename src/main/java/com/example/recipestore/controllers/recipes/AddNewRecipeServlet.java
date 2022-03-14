@@ -1,8 +1,6 @@
 package com.example.recipestore.controllers.recipes;
 
-import com.example.recipestore.IngredientDAO;
-import com.example.recipestore.InstructionDAO;
-import com.example.recipestore.RecipeDAO;
+import com.example.recipestore.DAO.RecipeDAO;
 import com.example.recipestore.models.Recipe;
 
 import javax.servlet.*;

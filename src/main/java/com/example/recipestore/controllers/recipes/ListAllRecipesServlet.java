@@ -1,6 +1,6 @@
 package com.example.recipestore.controllers.recipes;
 
-import com.example.recipestore.RecipeDAO;
+import com.example.recipestore.DAO.RecipeDAO;
 import com.example.recipestore.models.Recipe;
 
 import javax.servlet.*;
@@ -20,7 +20,6 @@ public class ListAllRecipesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // get recipes from database
         List<Recipe> allRecipes = recipeDAO.getAllRecipes();
-        System.out.println(allRecipes);
         if (allRecipes == null){
             request.setAttribute("errorMessage", "An error occurred finding your recipes. Try again later.");
         } else if (allRecipes.size() == 0){

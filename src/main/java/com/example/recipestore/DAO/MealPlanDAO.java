@@ -1,5 +1,6 @@
-package com.example.recipestore;
+package com.example.recipestore.DAO;
 
+import com.example.recipestore.hibernateUtil;
 import com.example.recipestore.models.MealPlan;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

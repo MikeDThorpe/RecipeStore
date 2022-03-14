@@ -1,7 +1,7 @@
 package com.example.recipestore.controllers.mealplans;
 
-import com.example.recipestore.MealPlanDAO;
-import com.example.recipestore.RecipeDAO;
+import com.example.recipestore.DAO.MealPlanDAO;
+import com.example.recipestore.DAO.RecipeDAO;
 import com.example.recipestore.models.MealPlan;
 import com.example.recipestore.models.Recipe;
 
@@ -27,6 +27,7 @@ public class ListAllMealPlansServlet extends HttpServlet {
         recipeDAO = new RecipeDAO();
     }
 
+    // GET Request -> /meal-plans = list all meal plans in a table
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<MealPlan> allMealPlans = mealPlanDAO.getAllMealPlans();
@@ -41,6 +42,7 @@ public class ListAllMealPlansServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    // POST Request -> /meal-plans = create new meal plan
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MealPlan generatedMealPlan = generateMealPlanFromRequest(request);

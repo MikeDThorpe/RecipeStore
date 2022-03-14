@@ -50,9 +50,14 @@ public class Recipe {
         // if pass in 'fish stew' what would I expect from getPath()
         // somethingwithoutaspace
         // fish & chips, does & break?
-        this.path = "/" + title.replace(' ', '-').toLowerCase();
+        this.path = createPathFromTitle(title);
         this.description = description;
         this.instructions = instructions;
         this.ingredients = ingredients;
+    }
+
+    public String createPathFromTitle(String title){
+        title = title.replace("&", "and");
+        return "/" + title.replace(' ', '-').toLowerCase();
     }
 }

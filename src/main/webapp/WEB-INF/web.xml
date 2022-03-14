@@ -3,7 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<!--    /recipes-->
+    <!--    /login-->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.example.recipestore.controllers.auth.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ListAllRecipesServlet</servlet-name>
         <servlet-class>com.example.recipestore.controllers.recipes.ListAllRecipesServlet</servlet-class>
@@ -49,3 +57,8 @@
         <url-pattern>/meal-plans/*</url-pattern>
     </servlet-mapping>
 </web-app>
+
+<!--Tomcat architecture-->
+<!--Coyote - handles TCP/IP connection to Tomcat-->
+<!--Catalina - parses HTTP Request/Response and relays to servlets-->
+<!--Jasper - converts JSP pages to servlet bytecode-->

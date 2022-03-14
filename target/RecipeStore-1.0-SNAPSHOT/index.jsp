@@ -11,7 +11,6 @@
     <div class="jumbotron">
         <a class="text-center" href="${pageContext.request.contextPath}/recipes"><h4>Add Recipe</h4></a>
     </div>
-
 </main>
 </body>
 </html>

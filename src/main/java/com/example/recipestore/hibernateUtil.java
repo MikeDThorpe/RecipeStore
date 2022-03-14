@@ -1,9 +1,7 @@
 package com.example.recipestore;
 
-import com.example.recipestore.models.Ingredient;
-import com.example.recipestore.models.Instruction;
-import com.example.recipestore.models.MealPlan;
-import com.example.recipestore.models.Recipe;
+import com.example.recipestore.models.*;
+import com.example.recipestore.models.user.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -27,7 +25,7 @@ public class hibernateUtil {
                 // set hibernate settings
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/recipe_store?autoReconnect=true&useSSL=false");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/recipe_store");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "pass");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
@@ -39,8 +37,7 @@ public class hibernateUtil {
 
                 configuration.addAnnotatedClass(Recipe.class);
                 configuration.addAnnotatedClass(MealPlan.class);
-                configuration.addAnnotatedClass(Instruction.class);
-                configuration.addAnnotatedClass(Ingredient.class);
+                configuration.addAnnotatedClass(User.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
