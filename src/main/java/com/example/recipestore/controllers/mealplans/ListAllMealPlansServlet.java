@@ -8,6 +8,7 @@ import com.example.recipestore.models.Recipe;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,9 +82,30 @@ public class ListAllMealPlansServlet extends HttpServlet {
         return generatedMealPlan;
     }
 
-    public List<Recipe> generateRecipesForMealPlan(int duration, List<Recipe> recipeList){
+    // generateMealPlan(days, recipies)
+
+    /**
+     *
+     * @param durationAsDays must >= 1
+     * @param recipeList
+     * @throws InvalidParameterException
+     * @return
+     *
+     * verbose description of method......
+     */
+    public List<Recipe> generateRecipesForMealPlan(int durationAsDays, List<Recipe> recipeList) {
+        /*
+        valid duration: >= 1
+        recipe list size: >= provided  duration
+         */
+        var paramsOk = true; // todo check values
+        if(!paramsOk) {
+            return new ArrayList<>();
+//            throw new InvalidParameterException("Invalid value for a param");
+        }
+
         List<Recipe> generatedRecipeList = new ArrayList<>();
-        for(int i = 0; i < duration; i++){
+        for(int i = 0; i < durationAsDays; i++){
             if(recipeList.size() == 1){
                 generatedRecipeList.add(recipeList.get(0));
                 break;

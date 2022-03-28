@@ -93,7 +93,15 @@
                 <c:if test="${mealplan.exclusions ne 'none'}">
                     <td>Excludes ${mealplan.exclusions} recipes</td>
                 </c:if>
-                <td>${mealplan.duration} days</td>
+                <td>
+                        ${mealplan.duration}
+                    <c:if test="${mealplan.duration == 1}">
+                        day
+                    </c:if>
+                            <c:if test="${mealplan.duration > 1}">
+                                days
+                            </c:if>
+                </td>
                 <td><a href="/meal-plans/${mealplan.meal_plan_id}"><button class="btn btn-info w-100">Manage</button></a></td>
             </tr>
         </c:forEach>
