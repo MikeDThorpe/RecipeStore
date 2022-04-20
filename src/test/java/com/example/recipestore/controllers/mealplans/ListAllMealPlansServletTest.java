@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,21 +32,16 @@ class ListAllMealPlansServletTest {
         assertNotNull(generatedRecipeList);
         assertEquals(duration, generatedRecipeList.size());
     }
-
-    // given x days and y recipes we get a mean plan with different recipe each day
-
-//     given x days and 1 recipe that 1 recipe should be used for all days
-//    @Test()
-//    @Expects(InvalidParameterException)
-//    public shouldThrowWhenBadParamValuesProvided() {
-//
-//    }
-//
-//    @Test()
-//    public shouldReturnEmptyCollectionBadParamValuesProvided() {
-//
-//    }
-
-    // test for bug described in JIRA-1234
-    // data y throws exception instead of empty collection
+    @Test
+    void shouldThroughExceptionFromBadParams() {
+        // setup
+        ListAllMealPlansServlet listAllMealPlansServlet =  new ListAllMealPlansServlet();
+        List<Recipe> recipeList = new ArrayList<>();
+        recipeList.add(new Recipe());
+        recipeList.add(new Recipe());
+        Exception exception = assertThrows(InvalidParameterException.class, () -> {
+            listAllMealPlansServlet.generateRecipesForMealPlan(5, recipeList);
+        });
+        assertEquals("Not enough recipes available to generate a meal plan.", exception.getMessage());
+    }
 }

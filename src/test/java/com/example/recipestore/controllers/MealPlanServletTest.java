@@ -11,7 +11,7 @@ class MealPlanServletTest {
         // dummyRequest = request.addParam()
 
        //var mockDao =  Mockito.mock(RecipeDAO);
-        // mock.when(thing).thenReturn(expectedValkue)
+        // mock.when(thing).thenReturn(expectedValue)
         //new RecipeServlet(mockDao);
 
         //  response =servlet.doPost(dummy test data)

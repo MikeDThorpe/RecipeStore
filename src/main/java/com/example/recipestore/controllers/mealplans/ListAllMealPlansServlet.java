@@ -82,29 +82,23 @@ public class ListAllMealPlansServlet extends HttpServlet {
         return generatedMealPlan;
     }
 
-    // generateMealPlan(days, recipies)
 
     /**
      *
-     * @param durationAsDays must >= 1
+     * @param durationAsDays
      * @param recipeList
      * @throws InvalidParameterException
-     * @return
+     * @return A list of recipes
      *
-     * verbose description of method......
      */
     public List<Recipe> generateRecipesForMealPlan(int durationAsDays, List<Recipe> recipeList) {
-        /*
-        valid duration: >= 1
-        recipe list size: >= provided  duration
-         */
-        var paramsOk = true; // todo check values
-        if(!paramsOk) {
-            return new ArrayList<>();
-//            throw new InvalidParameterException("Invalid value for a param");
-        }
 
         List<Recipe> generatedRecipeList = new ArrayList<>();
+
+        if(recipeList.size() < durationAsDays) {
+            throw new InvalidParameterException("Not enough recipes available to generate a meal plan.");
+        }
+
         for(int i = 0; i < durationAsDays; i++){
             if(recipeList.size() == 1){
                 generatedRecipeList.add(recipeList.get(0));

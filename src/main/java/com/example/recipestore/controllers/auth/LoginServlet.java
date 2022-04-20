@@ -45,16 +45,33 @@ public class LoginServlet extends HttpServlet {
         if(!isUser){
             response.sendRedirect("/login.jsp");
         } else {
-            HttpSession httpSession = request.getSession(true);
-            // create a session object
-            httpSession.setAttribute("isActive", true);
-            httpSession.setAttribute("username", user.getUsername());
+            HttpSession httpSession = request.getSession(true); // start a new http session
+            httpSession.setAttribute("isActive", true); // create a session object
+            httpSession.setAttribute("username", user.getUsername()); // add username to session object
             // create session cookie
             Cookie authCookie = new Cookie("USESSIONID", String.valueOf(UUID.randomUUID()));
             response.addCookie(authCookie);
+
+            // security - JWTs?
+            // does the value of the cookie match a set value - only checking the cookie is there and not checking its value
+            // store username to check against??
+            // sql injection
+
+            // http://mysite.com?lookuoid=123
+            // http://mysite.com?lookuoid=123`;drop table product;
+            // var product = runsql('select * from product where id = 123;drop table product;');
+
+            // shape of data - what shape should data be? eg id == interger
+            // var id = myService.clean(inputId); - looks for and removes malicious input or rejects input
+            // String statement = "select * from product where id = {chars(3)};
+            //  connection.execute(statement, id)
+            // "prepared statements"
+
+            // redirect to hub page now logged in
             response.sendRedirect("/recipes");
         }
     }
+
     public void handleSignUp(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
         boolean userCreated = userDAO.registerNewUser(user);
         if(!userCreated) {
